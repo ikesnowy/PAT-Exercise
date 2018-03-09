@@ -33,6 +33,11 @@ int main()
 		cout << "-";
 		sum = -sum;
 	}
+	else if (sum == 0)
+	{
+		cout << "0" << endl;
+		return 0;
+	}
 	string s = itos(sum);
 	if (s.length() < 4)
 	{
