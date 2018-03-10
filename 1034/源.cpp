@@ -9,7 +9,7 @@ void checkA(string a)
 	for (i = 0; i < a.length(); i++)
 	{
 		int index = a[i] - '0';
-		digit[index] = 1;
+		digit[index]++;
 	}
 }
 
