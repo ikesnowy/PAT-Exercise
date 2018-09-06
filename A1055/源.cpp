@@ -24,8 +24,9 @@ bool cmp(node * a, node * b)
 		return a->wealth > b->wealth;
 }
 
-vector<node*> total;
-vector<node*> valid;
+node * total[100010];
+node * valid[100010];
+int validNum = 0;
 int age[202];
 
 int main()
@@ -36,15 +37,15 @@ int main()
 	{
 		node * temp = new node();
 		scanf("%s %d %d", temp->name, &(temp->age), &(temp->wealth));
-		total.push_back(temp);
+		total[i] = temp;
 	}
 
-	sort(total.begin(), total.end(), cmp);
+	sort(total, total + n, cmp);
 
 	for (int i = 0; i < n; i++)
 	{
 		if (age[total[i]->age] < 100)
-			valid.push_back(total[i]);
+			valid[validNum++] = total[i];
 	}
 
 	int m, left, right;
@@ -53,7 +54,7 @@ int main()
 		scanf("%d %d %d", &m, &left, &right);
 		printf("Case #%d:\n", j + 1);
 		int printed = 0;
-		for (int i = 0; i < valid.size() && printed < m; i++)
+		for (int i = 0; i < validNum && printed < m; i++)
 		{
 			if (valid[i]->age >= left && valid[i]->age <= right)
 			{
